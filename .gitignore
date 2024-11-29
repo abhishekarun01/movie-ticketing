@@ -1,0 +1,14 @@
+# Environment files
+.env.local
+.env.*.local
+.env
+
+# Node.js dependencies
+node_modules
+package-lock.json
+*.gz
+
+# Logs
+logs
+*.log
+npm-debug.log*

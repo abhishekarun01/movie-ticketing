@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Show</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('../partials/navbar') %>
+
+        <div class="container mt-5">
+            <h2 class="text-center">Add Show</h2>
+            <form action="/shows" method="POST" class="mt-4">
+                <div class="mb-3">
+                    <label for="movieName" class="form-label">Movie</label>
+                    <div class="form-group mb-4">
+                        <select class="form-select" name="m_id" required>
+                            <% movies.forEach(movie=> { %>
+                                <option value="<%= movie.m_id %>">
+                                    <%= movie.m_name %>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="time" name="showTime" class="form-label">Show Start</label>
+                    <select class="form-select" name="st_time" placeholder="show timings" required>
+                        <option>
+                            00:00
+                        </option>
+                        <option>
+                            00:30
+                        </option>
+                        <option>
+                            01:00
+                        </option>
+                        <option>
+                            01:30
+                        </option>
+                        <option>
+                            02:00
+                        </option>
+                        <option>
+                            02:30
+                        </option>
+                        <option>
+                            03:00
+                        </option>
+                        <option>
+                            03:30
+                        </option>
+                        <option>
+                            04:00
+                        </option>
+                        <option>
+                            04:30
+                        </option>
+                        <option>
+                            05:00
+                        </option>
+                        <option>
+                            05:30
+                        </option>
+                        <option>
+                            06:00
+                        </option>
+                        <option>
+                            06:30
+                        </option>
+                        <option>
+                            07:00
+                        </option>
+                        <option>
+                            07:30
+                        </option>
+                        <option>
+                            08:00
+                        </option>
+                        <option>
+                            08:30
+                        </option>
+                        <option>
+                            09:00
+                        </option>
+                        <option>
+                            09:30
+                        </option>
+                        <option>
+                            10:00
+                        </option>
+                        <option>
+                            10:30
+                        </option>
+                        <option>
+                            11:00
+                        </option>
+                        <option>
+                            11:30
+                        </option>
+                        <option>
+                            12:00
+                        </option>
+                        <option>
+                            12:30
+                        </option>
+                        <option>
+                            13:00
+                        </option>
+                        <option>
+                            13:30
+                        </option>
+                        <option>
+                            14:00
+                        </option>
+                        <option>
+                            14:30
+                        </option>
+                        <option>
+                            15:00
+                        </option>
+                        <option>
+                            15:30
+                        </option>
+                        <option>
+                            16:00
+                        </option>
+                        <option>
+                            16:30
+                        </option>
+                        <option>
+                            17:00
+                        </option>
+                        <option>
+                            17:30
+                        </option>
+                        <option>
+                            18:00
+                        </option>
+                        <option>
+                            18:30
+                        </option>
+                        <option>
+                            19:00
+                        </option>
+                        <option>
+                            19:30
+                        </option>
+                        <option>
+                            20:00
+                        </option>
+                        <option>
+                            20:30
+                        </option>
+                        <option>
+                            21:00
+                        </option>
+                        <option>
+                            21:30
+                        </option>
+                        <option>
+                            22:00
+                        </option>
+                        <option>
+                            22:30
+                        </option>
+                        <option>
+                            23:00
+                        </option>
+                        <option>
+                            23:30
+                        </option>
+
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="time" name="showTime" class="form-label">Show End</label>
+                    <select class="form-select" name="end_time" required>
+                        <option>
+                            00:00
+                        </option>
+                        <option>
+                            00:30
+                        </option>
+                        <option>
+                            01:00
+                        </option>
+                        <option>
+                            01:30
+                        </option>
+                        <option>
+                            02:00
+                        </option>
+                        <option>
+                            02:30
+                        </option>
+                        <option>
+                            03:00
+                        </option>
+                        <option>
+                            03:30
+                        </option>
+                        04:00
+                        </option>
+                        <option>
+                            04:30
+                        </option>
+                        <option>
+                            05:00
+                        </option>
+                        <option>
+                            05:30
+                        </option>
+                        <option>
+                            06:00
+                        </option>
+                        <option>
+                            06:30
+                        </option>
+                        <option>
+                            07:00
+                        </option>
+                        <option>
+                            07:30
+                        </option>
+                        <option>
+                            08:00
+                        </option>
+                        <option>
+                            08:30
+                        </option>
+                        <option>
+                            09:00
+                        </option>
+                        <option>
+                            09:30
+                        </option>
+                        <option>
+                            10:00
+                        </option>
+                        <option>
+                            10:30
+                        </option>
+                        <option>
+                            11:00
+                        </option>
+                        <option>
+                            11:30
+                        </option>
+                        <option>
+                            12:00
+                        </option>
+                        <option>
+                            12:30
+                        </option>
+                        <option>
+                            13:00
+                        </option>
+                        <option>
+                            13:30
+                        </option>
+                        <option>
+                            14:00
+                        </option>
+                        <option>
+                            14:30
+                        </option>
+                        <option>
+                            15:00
+                        </option>
+                        <option>
+                            15:30
+                        </option>
+                        <option>
+                            16:00
+                        </option>
+                        <option>
+                            16:30
+                        </option>
+                        <option>
+                            17:00
+                        </option>
+                        <option>
+                            17:30
+                        </option>
+                        <option>
+                            18:00
+                        </option>
+                        <option>
+                            18:30
+                        </option>
+                        <option>
+                            19:00
+                        </option>
+                        <option>
+                            19:30
+                        </option>
+                        <option>
+                            20:00
+                        </option>
+                        <option>
+                            20:30
+                        </option>
+                        <option>
+                            21:00
+                        </option>
+                        <option>
+                            21:30
+                        </option>
+                        <option>
+                            22:00
+                        </option>
+                        <option>
+                            22:30
+                        </option>
+                        <option>
+                            23:00
+                        </option>
+                        <option>
+                            23:30
+                        </option>
+
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success">Add Show</button>
+            </form>
+        </div>
+</body>
+
+</html>
