@@ -12,21 +12,20 @@ const Movie = {
     },
 
     create: async (data) => {
-        const { m_name, rating } = data;
-        const result = await db.query('INSERT INTO Movie (m_name, rating) VALUES (?, ?)', [m_name, rating]);
+        const { m_name, rating, ImageURL } = data;
+        const result = await db.query('INSERT INTO Movie (m_name, rating, ImageURL) VALUES (?, ?, ?)', [m_name, rating, ImageURL]);
         console.log(result);
         return result[0];
     },
 
     update: async (id, data) => {
-        const { m_name, rating } = data;
-        const result = await db.query('UPDATE Movie SET m_name = ?, rating = ? WHERE m_id = ?', [m_name, rating, id]);
+        const { m_name, rating, ImageURL } = data;
+        const result = await db.query('UPDATE Movie SET m_name = ?, rating = ? , ImageURL = ? WHERE m_id = ?', [m_name, rating, ImageURL, id]);
         return result[0];
     },
 
     delete: async (id) => {
-        // const { m_name } = data;
-        const result = await db.query('DELETE FROM Movie WHERE m_name = ?', [id]);
+        const result = await db.query('DELETE FROM Movie WHERE m_id = ?', [id]);
         return result[0];
     }
 };

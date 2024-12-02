@@ -5,11 +5,8 @@ const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const path = require('path');
 const session = require('express-session');
-const flash = require('connect-flash');
-const passport = require('passport');
-const LocalStrategy = require('passport-local');
-const User = require('./models/User')
 const MySQLStore = require('express-mysql-session')(session)
+const flash = require('connect-flash');
 
 
 const app = express();
@@ -43,13 +40,6 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
-// app.use(passport.initialize());
-// app.use(passport.session());
-// passport.use(new LocalStrategy(User.authenticate()));
-
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-
 app.use((req, res, next) => {
     res.locals.session = req.session;
     res.locals.currentUser = req.user;
@@ -59,26 +49,19 @@ app.use((req, res, next) => {
 })
 
 // Import routes
-const adminRoutes = require('./routes/admin');
 const bookingRoutes = require('./routes/bookings');
 const movieRoutes = require('./routes/movies');
-const seatRoutes = require('./routes/seats');
 const showRoutes = require('./routes/shows');
-const theatreRoutes = require('./routes/theatres');
-const ticketRoutes = require('./routes/tickets');
 const userRoutes = require('./routes/user');
 const newMovieRoutes = require('./routes/newMovie')
 
 // Use routes
-app.use('/admin', adminRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/movies', movieRoutes);
-app.use('/seats', seatRoutes);
 app.use('/shows', showRoutes);
-app.use('/theatres', theatreRoutes);
-app.use('/tickets', ticketRoutes);
 app.use('/', userRoutes);
 app.use('/newMovie', newMovieRoutes)
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

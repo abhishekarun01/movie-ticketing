@@ -1,8 +1,8 @@
 const db = require('../config/db');
 
 const Ticket = {
-    getAll: async () => {
-        const [tickets] = await db.query('SELECT * FROM Tickets');
+    getAll: async (id) => {
+        const [tickets] = await db.query('SELECT * FROM Tickets WHERE show_id = ?', [id]);
         return tickets;
     },
 

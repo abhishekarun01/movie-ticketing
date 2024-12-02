@@ -28,28 +28,26 @@
     <%- include('../partials/navbar') %>
 
         <div class="form-container">
-            <h2 class="text-center form-heading">Add Shows - <%= movies.m_name %>
+            <h2 class="text-center form-heading">Edit Show for <%= movie.m_name %>
             </h2>
 
-            <form action="/shows" method="POST" class="mt-4">
+            <form action="/shows/edit/<%=show.show_id%>?_method=PUT" method="POST" class="mt-4">
                 <!-- Movie Title -->
                 <div class="mb-3">
                     <label for="movieName" class="form-label">Movie:</label>
                     <div class="form-group mb-4">
-                        <input type="hidden" name="m_id" value="<%= id %>" required>
-                        <input class="form-control" type="text" placeholder="<%= movies.m_name %>" id="movieName"
-                            disabled required>
+                        <input class="form-control" type="text" placeholder="<%= movie.m_name %>" id="movieName"
+                            name="movieName" value="<%= movie.m_name %>" disabled required>
+                        <input type="hidden" name="m_id" value="<%= movie.m_id %>">
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="no_of_seats">Number of Seats:</label>
-                    <input type="number" name="total_seats" id="no_of_seats" class="form-control" min="50" max="100">
-                </div>
-
-                <div class="mb-3">
                     <label for="time" name="showTime" class="form-label">Show Start:</label>
-                    <select class="form-select" name="st_time" placeholder="show timings" required>
+                    <select id="time" class="form-select" name="st_time" required>
+                        <option value="" disabled selected>
+                            <%= show.st_time %>
+                        </option>
                         <option>
                             00:00
                         </option>
@@ -200,7 +198,10 @@
 
                 <div class="mb-3">
                     <label for="time" name="showTime" class="form-label">Show End:</label>
-                    <select class="form-select" name="end_time" placeholder="show timings" required>
+                    <select id="time" class="form-select" name="end_time" required>
+                        <option value="" disabled selected>
+                            <%= show.end_time %>
+                        </option>
                         <option>
                             00:00
                         </option>
@@ -349,9 +350,17 @@
                     </select>
                 </div>
 
+
+
+                <!-- Image Upload
+        <div class="mb-3">
+            <label for="image" class="form-label">Movie Poster</label>
+            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+        </div> -->
+
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary" style="width: 50%;">Add Show</button>
-                <a href="/movies/<%= id %>/edit" class="btn btn-danger" style="width: 49%;">Cancel</a>
+                <button type="submit" class="btn btn-warning">Update Show</button>
+                <a href="/shows/delete/<%= movie.m_id %>" class="btn btn-secondary">Cancel</a>
 
             </form>
         </div>
